@@ -1,0 +1,1 @@
+from saleStorePredictor.config.configuration import ConfigurationManager
