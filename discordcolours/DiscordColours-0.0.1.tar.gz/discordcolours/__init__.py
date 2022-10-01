@@ -1,0 +1,1 @@
+from discordcolours.discordcolours import colourcoder
