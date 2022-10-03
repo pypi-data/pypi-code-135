@@ -1,0 +1,34 @@
+# Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+# This product includes software developed at Datadog (https://www.datadoghq.com/).
+# Copyright 2019-Present Datadog, Inc.
+
+
+from datadog_api_client.model_utils import (
+    ModelNormal,
+    cached_property,
+)
+
+
+class DashboardListDeleteItemsRequest(ModelNormal):
+    @cached_property
+    def openapi_types(_):
+        from datadog_api_client.v2.model.dashboard_list_item_request import DashboardListItemRequest
+
+        return {
+            "dashboards": ([DashboardListItemRequest],),
+        }
+
+    attribute_map = {
+        "dashboards": "dashboards",
+    }
+
+    def __init__(self_, *args, **kwargs):
+        """
+        Request containing a list of dashboards to delete.
+
+        :param dashboards: List of dashboards to delete from the dashboard list.
+        :type dashboards: [DashboardListItemRequest], optional
+        """
+        super().__init__(kwargs)
+
+        self_._check_pos_args(args)

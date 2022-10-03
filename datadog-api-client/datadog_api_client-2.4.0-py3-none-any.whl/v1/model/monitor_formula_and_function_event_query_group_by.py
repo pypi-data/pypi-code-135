@@ -1,0 +1,48 @@
+# Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+# This product includes software developed at Datadog (https://www.datadoghq.com/).
+# Copyright 2019-Present Datadog, Inc.
+
+
+from datadog_api_client.model_utils import (
+    ModelNormal,
+    cached_property,
+)
+
+
+class MonitorFormulaAndFunctionEventQueryGroupBy(ModelNormal):
+    @cached_property
+    def openapi_types(_):
+        from datadog_api_client.v1.model.monitor_formula_and_function_event_query_group_by_sort import (
+            MonitorFormulaAndFunctionEventQueryGroupBySort,
+        )
+
+        return {
+            "facet": (str,),
+            "limit": (int,),
+            "sort": (MonitorFormulaAndFunctionEventQueryGroupBySort,),
+        }
+
+    attribute_map = {
+        "facet": "facet",
+        "limit": "limit",
+        "sort": "sort",
+    }
+
+    def __init__(self_, facet, *args, **kwargs):
+        """
+        List of objects used to group by.
+
+        :param facet: Event facet.
+        :type facet: str
+
+        :param limit: Number of groups to return.
+        :type limit: int, optional
+
+        :param sort: Options for sorting group by results.
+        :type sort: MonitorFormulaAndFunctionEventQueryGroupBySort, optional
+        """
+        super().__init__(kwargs)
+
+        self_._check_pos_args(args)
+
+        self_.facet = facet
