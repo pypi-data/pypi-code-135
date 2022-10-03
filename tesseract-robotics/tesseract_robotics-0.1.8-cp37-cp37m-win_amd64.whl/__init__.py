@@ -1,0 +1,32 @@
+
+
+""""""# start delvewheel patch
+def _delvewheel_init_patch_1_0_1():
+    import os
+    import sys
+    libs_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'tesseract_robotics.libs'))
+    if sys.version_info[:2] >= (3, 8) and not os.path.exists(os.path.join(sys.base_prefix, 'conda-meta')) or sys.version_info[:2] >= (3, 10):
+        os.add_dll_directory(libs_dir)
+    else:
+        from ctypes import WinDLL
+        with open(os.path.join(libs_dir, '.load-order-tesseract_robotics-0.1.8')) as file:
+            load_order = file.read().split()
+        for lib in load_order:
+            WinDLL(os.path.join(libs_dir, lib))
+
+
+_delvewheel_init_patch_1_0_1()
+del _delvewheel_init_patch_1_0_1
+# end delvewheel patch
+
+def _tesseract_dll_path_():
+    import sys
+    import os
+    if sys.platform == "win32" and sys.version_info[:2] >= (3, 8):
+        tesseract_env_path = os.environ.get("TESSERACT_PYTHON_DLL_PATH",None)
+        if tesseract_env_path:
+            for p in tesseract_env_path.split(os.pathsep):
+                os.add_dll_directory(p)
+
+_tesseract_dll_path_()
+del _tesseract_dll_path_
