@@ -1,0 +1,37 @@
+"""
+==============
+Urls collector
+==============
+
+"""
+from .logger import LoggerBase
+
+
+class ApplicationUrlCollector(LoggerBase):
+    """
+    Application urls collector is a class to inherit from an Application url class to
+    create url patterns collections.
+    """
+    def __init__(self, settings=None):
+        self.settings = settings
+
+    def load_urlpatterns(self, urlpatterns):
+        """
+        Method to implement by Application Url classes.
+
+        Every classes should not forget to use ``super().load_urlpatterns(urlpatterns)``
+        in their ``load_urlpatterns`` method implementation, commonly at the beggining.
+        """
+        return urlpatterns
+
+    def collect(self, urlpatterns):
+        self.log.debug("Application urls collector processing")
+        patterns = self.load_urlpatterns(urlpatterns)
+
+        # Debug
+        print()
+        for item in patterns:
+            print("*", item)
+        print()
+
+        return patterns
