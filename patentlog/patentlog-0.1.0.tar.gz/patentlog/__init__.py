@@ -1,0 +1,1 @@
+from patentlog import logger
