@@ -1,0 +1,1559 @@
+'''
+# `aws_batch_compute_environment`
+
+Refer to the Terraform Registory for docs: [`aws_batch_compute_environment`](https://www.terraform.io/docs/providers/aws/r/batch_compute_environment).
+'''
+import abc
+import builtins
+import datetime
+import enum
+import typing
+
+import jsii
+import publication
+import typing_extensions
+
+from typeguard import check_type
+
+from .._jsii import *
+
+import cdktf
+import constructs
+
+
+class BatchComputeEnvironment(
+    cdktf.TerraformResource,
+    metaclass=jsii.JSIIMeta,
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironment",
+):
+    '''Represents a {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment aws_batch_compute_environment}.'''
+
+    def __init__(
+        self,
+        scope: constructs.Construct,
+        id_: builtins.str,
+        *,
+        type: builtins.str,
+        compute_environment_name: typing.Optional[builtins.str] = None,
+        compute_environment_name_prefix: typing.Optional[builtins.str] = None,
+        compute_resources: typing.Optional[typing.Union["BatchComputeEnvironmentComputeResources", typing.Dict[str, typing.Any]]] = None,
+        id: typing.Optional[builtins.str] = None,
+        service_role: typing.Optional[builtins.str] = None,
+        state: typing.Optional[builtins.str] = None,
+        tags: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+        tags_all: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+        connection: typing.Optional[typing.Union[typing.Union[cdktf.SSHProvisionerConnection, typing.Dict[str, typing.Any]], typing.Union[cdktf.WinrmProvisionerConnection, typing.Dict[str, typing.Any]]]] = None,
+        count: typing.Optional[jsii.Number] = None,
+        depends_on: typing.Optional[typing.Sequence[cdktf.ITerraformDependable]] = None,
+        for_each: typing.Optional[cdktf.ITerraformIterator] = None,
+        lifecycle: typing.Optional[typing.Union[cdktf.TerraformResourceLifecycle, typing.Dict[str, typing.Any]]] = None,
+        provider: typing.Optional[cdktf.TerraformProvider] = None,
+        provisioners: typing.Optional[typing.Sequence[typing.Union[typing.Union[cdktf.FileProvisioner, typing.Dict[str, typing.Any]], typing.Union[cdktf.LocalExecProvisioner, typing.Dict[str, typing.Any]], typing.Union[cdktf.RemoteExecProvisioner, typing.Dict[str, typing.Any]]]]] = None,
+    ) -> None:
+        '''Create a new {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment aws_batch_compute_environment} Resource.
+
+        :param scope: The scope in which to define this construct.
+        :param id_: The scoped construct ID. Must be unique amongst siblings in the same scope
+        :param type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.
+        :param compute_environment_name: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name BatchComputeEnvironment#compute_environment_name}.
+        :param compute_environment_name_prefix: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name_prefix BatchComputeEnvironment#compute_environment_name_prefix}.
+        :param compute_resources: compute_resources block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_resources BatchComputeEnvironment#compute_resources}
+        :param id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#id BatchComputeEnvironment#id}. Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2. If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+        :param service_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#service_role BatchComputeEnvironment#service_role}.
+        :param state: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#state BatchComputeEnvironment#state}.
+        :param tags: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.
+        :param tags_all: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags_all BatchComputeEnvironment#tags_all}.
+        :param connection: 
+        :param count: 
+        :param depends_on: 
+        :param for_each: 
+        :param lifecycle: 
+        :param provider: 
+        :param provisioners: 
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironment.__init__)
+            check_type(argname="argument scope", value=scope, expected_type=type_hints["scope"])
+            check_type(argname="argument id_", value=id_, expected_type=type_hints["id_"])
+        config = BatchComputeEnvironmentConfig(
+            type=type,
+            compute_environment_name=compute_environment_name,
+            compute_environment_name_prefix=compute_environment_name_prefix,
+            compute_resources=compute_resources,
+            id=id,
+            service_role=service_role,
+            state=state,
+            tags=tags,
+            tags_all=tags_all,
+            connection=connection,
+            count=count,
+            depends_on=depends_on,
+            for_each=for_each,
+            lifecycle=lifecycle,
+            provider=provider,
+            provisioners=provisioners,
+        )
+
+        jsii.create(self.__class__, self, [scope, id_, config])
+
+    @jsii.member(jsii_name="putComputeResources")
+    def put_compute_resources(
+        self,
+        *,
+        max_vcpus: jsii.Number,
+        security_group_ids: typing.Sequence[builtins.str],
+        subnets: typing.Sequence[builtins.str],
+        type: builtins.str,
+        allocation_strategy: typing.Optional[builtins.str] = None,
+        bid_percentage: typing.Optional[jsii.Number] = None,
+        desired_vcpus: typing.Optional[jsii.Number] = None,
+        ec2_configuration: typing.Optional[typing.Union["BatchComputeEnvironmentComputeResourcesEc2Configuration", typing.Dict[str, typing.Any]]] = None,
+        ec2_key_pair: typing.Optional[builtins.str] = None,
+        image_id: typing.Optional[builtins.str] = None,
+        instance_role: typing.Optional[builtins.str] = None,
+        instance_type: typing.Optional[typing.Sequence[builtins.str]] = None,
+        launch_template: typing.Optional[typing.Union["BatchComputeEnvironmentComputeResourcesLaunchTemplate", typing.Dict[str, typing.Any]]] = None,
+        min_vcpus: typing.Optional[jsii.Number] = None,
+        spot_iam_fleet_role: typing.Optional[builtins.str] = None,
+        tags: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+    ) -> None:
+        '''
+        :param max_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#max_vcpus BatchComputeEnvironment#max_vcpus}.
+        :param security_group_ids: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#security_group_ids BatchComputeEnvironment#security_group_ids}.
+        :param subnets: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#subnets BatchComputeEnvironment#subnets}.
+        :param type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.
+        :param allocation_strategy: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#allocation_strategy BatchComputeEnvironment#allocation_strategy}.
+        :param bid_percentage: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#bid_percentage BatchComputeEnvironment#bid_percentage}.
+        :param desired_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#desired_vcpus BatchComputeEnvironment#desired_vcpus}.
+        :param ec2_configuration: ec2_configuration block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_configuration BatchComputeEnvironment#ec2_configuration}
+        :param ec2_key_pair: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_key_pair BatchComputeEnvironment#ec2_key_pair}.
+        :param image_id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id BatchComputeEnvironment#image_id}.
+        :param instance_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_role BatchComputeEnvironment#instance_role}.
+        :param instance_type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_type BatchComputeEnvironment#instance_type}.
+        :param launch_template: launch_template block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template BatchComputeEnvironment#launch_template}
+        :param min_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#min_vcpus BatchComputeEnvironment#min_vcpus}.
+        :param spot_iam_fleet_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#spot_iam_fleet_role BatchComputeEnvironment#spot_iam_fleet_role}.
+        :param tags: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.
+        '''
+        value = BatchComputeEnvironmentComputeResources(
+            max_vcpus=max_vcpus,
+            security_group_ids=security_group_ids,
+            subnets=subnets,
+            type=type,
+            allocation_strategy=allocation_strategy,
+            bid_percentage=bid_percentage,
+            desired_vcpus=desired_vcpus,
+            ec2_configuration=ec2_configuration,
+            ec2_key_pair=ec2_key_pair,
+            image_id=image_id,
+            instance_role=instance_role,
+            instance_type=instance_type,
+            launch_template=launch_template,
+            min_vcpus=min_vcpus,
+            spot_iam_fleet_role=spot_iam_fleet_role,
+            tags=tags,
+        )
+
+        return typing.cast(None, jsii.invoke(self, "putComputeResources", [value]))
+
+    @jsii.member(jsii_name="resetComputeEnvironmentName")
+    def reset_compute_environment_name(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetComputeEnvironmentName", []))
+
+    @jsii.member(jsii_name="resetComputeEnvironmentNamePrefix")
+    def reset_compute_environment_name_prefix(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetComputeEnvironmentNamePrefix", []))
+
+    @jsii.member(jsii_name="resetComputeResources")
+    def reset_compute_resources(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetComputeResources", []))
+
+    @jsii.member(jsii_name="resetId")
+    def reset_id(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetId", []))
+
+    @jsii.member(jsii_name="resetServiceRole")
+    def reset_service_role(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetServiceRole", []))
+
+    @jsii.member(jsii_name="resetState")
+    def reset_state(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetState", []))
+
+    @jsii.member(jsii_name="resetTags")
+    def reset_tags(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetTags", []))
+
+    @jsii.member(jsii_name="resetTagsAll")
+    def reset_tags_all(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetTagsAll", []))
+
+    @jsii.member(jsii_name="synthesizeAttributes")
+    def _synthesize_attributes(self) -> typing.Mapping[builtins.str, typing.Any]:
+        return typing.cast(typing.Mapping[builtins.str, typing.Any], jsii.invoke(self, "synthesizeAttributes", []))
+
+    @jsii.python.classproperty
+    @jsii.member(jsii_name="tfResourceType")
+    def TF_RESOURCE_TYPE(cls) -> builtins.str:
+        return typing.cast(builtins.str, jsii.sget(cls, "tfResourceType"))
+
+    @builtins.property
+    @jsii.member(jsii_name="arn")
+    def arn(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "arn"))
+
+    @builtins.property
+    @jsii.member(jsii_name="computeResources")
+    def compute_resources(
+        self,
+    ) -> "BatchComputeEnvironmentComputeResourcesOutputReference":
+        return typing.cast("BatchComputeEnvironmentComputeResourcesOutputReference", jsii.get(self, "computeResources"))
+
+    @builtins.property
+    @jsii.member(jsii_name="ecsClusterArn")
+    def ecs_cluster_arn(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "ecsClusterArn"))
+
+    @builtins.property
+    @jsii.member(jsii_name="status")
+    def status(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "status"))
+
+    @builtins.property
+    @jsii.member(jsii_name="statusReason")
+    def status_reason(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "statusReason"))
+
+    @builtins.property
+    @jsii.member(jsii_name="computeEnvironmentNameInput")
+    def compute_environment_name_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "computeEnvironmentNameInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="computeEnvironmentNamePrefixInput")
+    def compute_environment_name_prefix_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "computeEnvironmentNamePrefixInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="computeResourcesInput")
+    def compute_resources_input(
+        self,
+    ) -> typing.Optional["BatchComputeEnvironmentComputeResources"]:
+        return typing.cast(typing.Optional["BatchComputeEnvironmentComputeResources"], jsii.get(self, "computeResourcesInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="idInput")
+    def id_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "idInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="serviceRoleInput")
+    def service_role_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "serviceRoleInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="stateInput")
+    def state_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "stateInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="tagsAllInput")
+    def tags_all_input(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], jsii.get(self, "tagsAllInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="tagsInput")
+    def tags_input(self) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], jsii.get(self, "tagsInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="typeInput")
+    def type_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "typeInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="computeEnvironmentName")
+    def compute_environment_name(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "computeEnvironmentName"))
+
+    @compute_environment_name.setter
+    def compute_environment_name(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "compute_environment_name").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "computeEnvironmentName", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="computeEnvironmentNamePrefix")
+    def compute_environment_name_prefix(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "computeEnvironmentNamePrefix"))
+
+    @compute_environment_name_prefix.setter
+    def compute_environment_name_prefix(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "compute_environment_name_prefix").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "computeEnvironmentNamePrefix", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="id")
+    def id(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "id"))
+
+    @id.setter
+    def id(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "id").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "id", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="serviceRole")
+    def service_role(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "serviceRole"))
+
+    @service_role.setter
+    def service_role(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "service_role").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "serviceRole", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="state")
+    def state(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "state"))
+
+    @state.setter
+    def state(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "state").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "state", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="tags")
+    def tags(self) -> typing.Mapping[builtins.str, builtins.str]:
+        return typing.cast(typing.Mapping[builtins.str, builtins.str], jsii.get(self, "tags"))
+
+    @tags.setter
+    def tags(self, value: typing.Mapping[builtins.str, builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "tags").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "tags", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="tagsAll")
+    def tags_all(self) -> typing.Mapping[builtins.str, builtins.str]:
+        return typing.cast(typing.Mapping[builtins.str, builtins.str], jsii.get(self, "tagsAll"))
+
+    @tags_all.setter
+    def tags_all(self, value: typing.Mapping[builtins.str, builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "tags_all").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "tagsAll", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="type")
+    def type(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "type"))
+
+    @type.setter
+    def type(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironment, "type").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "type", value)
+
+
+@jsii.data_type(
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResources",
+    jsii_struct_bases=[],
+    name_mapping={
+        "max_vcpus": "maxVcpus",
+        "security_group_ids": "securityGroupIds",
+        "subnets": "subnets",
+        "type": "type",
+        "allocation_strategy": "allocationStrategy",
+        "bid_percentage": "bidPercentage",
+        "desired_vcpus": "desiredVcpus",
+        "ec2_configuration": "ec2Configuration",
+        "ec2_key_pair": "ec2KeyPair",
+        "image_id": "imageId",
+        "instance_role": "instanceRole",
+        "instance_type": "instanceType",
+        "launch_template": "launchTemplate",
+        "min_vcpus": "minVcpus",
+        "spot_iam_fleet_role": "spotIamFleetRole",
+        "tags": "tags",
+    },
+)
+class BatchComputeEnvironmentComputeResources:
+    def __init__(
+        self,
+        *,
+        max_vcpus: jsii.Number,
+        security_group_ids: typing.Sequence[builtins.str],
+        subnets: typing.Sequence[builtins.str],
+        type: builtins.str,
+        allocation_strategy: typing.Optional[builtins.str] = None,
+        bid_percentage: typing.Optional[jsii.Number] = None,
+        desired_vcpus: typing.Optional[jsii.Number] = None,
+        ec2_configuration: typing.Optional[typing.Union["BatchComputeEnvironmentComputeResourcesEc2Configuration", typing.Dict[str, typing.Any]]] = None,
+        ec2_key_pair: typing.Optional[builtins.str] = None,
+        image_id: typing.Optional[builtins.str] = None,
+        instance_role: typing.Optional[builtins.str] = None,
+        instance_type: typing.Optional[typing.Sequence[builtins.str]] = None,
+        launch_template: typing.Optional[typing.Union["BatchComputeEnvironmentComputeResourcesLaunchTemplate", typing.Dict[str, typing.Any]]] = None,
+        min_vcpus: typing.Optional[jsii.Number] = None,
+        spot_iam_fleet_role: typing.Optional[builtins.str] = None,
+        tags: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+    ) -> None:
+        '''
+        :param max_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#max_vcpus BatchComputeEnvironment#max_vcpus}.
+        :param security_group_ids: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#security_group_ids BatchComputeEnvironment#security_group_ids}.
+        :param subnets: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#subnets BatchComputeEnvironment#subnets}.
+        :param type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.
+        :param allocation_strategy: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#allocation_strategy BatchComputeEnvironment#allocation_strategy}.
+        :param bid_percentage: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#bid_percentage BatchComputeEnvironment#bid_percentage}.
+        :param desired_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#desired_vcpus BatchComputeEnvironment#desired_vcpus}.
+        :param ec2_configuration: ec2_configuration block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_configuration BatchComputeEnvironment#ec2_configuration}
+        :param ec2_key_pair: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_key_pair BatchComputeEnvironment#ec2_key_pair}.
+        :param image_id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id BatchComputeEnvironment#image_id}.
+        :param instance_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_role BatchComputeEnvironment#instance_role}.
+        :param instance_type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_type BatchComputeEnvironment#instance_type}.
+        :param launch_template: launch_template block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template BatchComputeEnvironment#launch_template}
+        :param min_vcpus: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#min_vcpus BatchComputeEnvironment#min_vcpus}.
+        :param spot_iam_fleet_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#spot_iam_fleet_role BatchComputeEnvironment#spot_iam_fleet_role}.
+        :param tags: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.
+        '''
+        if isinstance(ec2_configuration, dict):
+            ec2_configuration = BatchComputeEnvironmentComputeResourcesEc2Configuration(**ec2_configuration)
+        if isinstance(launch_template, dict):
+            launch_template = BatchComputeEnvironmentComputeResourcesLaunchTemplate(**launch_template)
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResources.__init__)
+            check_type(argname="argument max_vcpus", value=max_vcpus, expected_type=type_hints["max_vcpus"])
+            check_type(argname="argument security_group_ids", value=security_group_ids, expected_type=type_hints["security_group_ids"])
+            check_type(argname="argument subnets", value=subnets, expected_type=type_hints["subnets"])
+            check_type(argname="argument type", value=type, expected_type=type_hints["type"])
+            check_type(argname="argument allocation_strategy", value=allocation_strategy, expected_type=type_hints["allocation_strategy"])
+            check_type(argname="argument bid_percentage", value=bid_percentage, expected_type=type_hints["bid_percentage"])
+            check_type(argname="argument desired_vcpus", value=desired_vcpus, expected_type=type_hints["desired_vcpus"])
+            check_type(argname="argument ec2_configuration", value=ec2_configuration, expected_type=type_hints["ec2_configuration"])
+            check_type(argname="argument ec2_key_pair", value=ec2_key_pair, expected_type=type_hints["ec2_key_pair"])
+            check_type(argname="argument image_id", value=image_id, expected_type=type_hints["image_id"])
+            check_type(argname="argument instance_role", value=instance_role, expected_type=type_hints["instance_role"])
+            check_type(argname="argument instance_type", value=instance_type, expected_type=type_hints["instance_type"])
+            check_type(argname="argument launch_template", value=launch_template, expected_type=type_hints["launch_template"])
+            check_type(argname="argument min_vcpus", value=min_vcpus, expected_type=type_hints["min_vcpus"])
+            check_type(argname="argument spot_iam_fleet_role", value=spot_iam_fleet_role, expected_type=type_hints["spot_iam_fleet_role"])
+            check_type(argname="argument tags", value=tags, expected_type=type_hints["tags"])
+        self._values: typing.Dict[str, typing.Any] = {
+            "max_vcpus": max_vcpus,
+            "security_group_ids": security_group_ids,
+            "subnets": subnets,
+            "type": type,
+        }
+        if allocation_strategy is not None:
+            self._values["allocation_strategy"] = allocation_strategy
+        if bid_percentage is not None:
+            self._values["bid_percentage"] = bid_percentage
+        if desired_vcpus is not None:
+            self._values["desired_vcpus"] = desired_vcpus
+        if ec2_configuration is not None:
+            self._values["ec2_configuration"] = ec2_configuration
+        if ec2_key_pair is not None:
+            self._values["ec2_key_pair"] = ec2_key_pair
+        if image_id is not None:
+            self._values["image_id"] = image_id
+        if instance_role is not None:
+            self._values["instance_role"] = instance_role
+        if instance_type is not None:
+            self._values["instance_type"] = instance_type
+        if launch_template is not None:
+            self._values["launch_template"] = launch_template
+        if min_vcpus is not None:
+            self._values["min_vcpus"] = min_vcpus
+        if spot_iam_fleet_role is not None:
+            self._values["spot_iam_fleet_role"] = spot_iam_fleet_role
+        if tags is not None:
+            self._values["tags"] = tags
+
+    @builtins.property
+    def max_vcpus(self) -> jsii.Number:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#max_vcpus BatchComputeEnvironment#max_vcpus}.'''
+        result = self._values.get("max_vcpus")
+        assert result is not None, "Required property 'max_vcpus' is missing"
+        return typing.cast(jsii.Number, result)
+
+    @builtins.property
+    def security_group_ids(self) -> typing.List[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#security_group_ids BatchComputeEnvironment#security_group_ids}.'''
+        result = self._values.get("security_group_ids")
+        assert result is not None, "Required property 'security_group_ids' is missing"
+        return typing.cast(typing.List[builtins.str], result)
+
+    @builtins.property
+    def subnets(self) -> typing.List[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#subnets BatchComputeEnvironment#subnets}.'''
+        result = self._values.get("subnets")
+        assert result is not None, "Required property 'subnets' is missing"
+        return typing.cast(typing.List[builtins.str], result)
+
+    @builtins.property
+    def type(self) -> builtins.str:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.'''
+        result = self._values.get("type")
+        assert result is not None, "Required property 'type' is missing"
+        return typing.cast(builtins.str, result)
+
+    @builtins.property
+    def allocation_strategy(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#allocation_strategy BatchComputeEnvironment#allocation_strategy}.'''
+        result = self._values.get("allocation_strategy")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def bid_percentage(self) -> typing.Optional[jsii.Number]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#bid_percentage BatchComputeEnvironment#bid_percentage}.'''
+        result = self._values.get("bid_percentage")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def desired_vcpus(self) -> typing.Optional[jsii.Number]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#desired_vcpus BatchComputeEnvironment#desired_vcpus}.'''
+        result = self._values.get("desired_vcpus")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def ec2_configuration(
+        self,
+    ) -> typing.Optional["BatchComputeEnvironmentComputeResourcesEc2Configuration"]:
+        '''ec2_configuration block.
+
+        Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_configuration BatchComputeEnvironment#ec2_configuration}
+        '''
+        result = self._values.get("ec2_configuration")
+        return typing.cast(typing.Optional["BatchComputeEnvironmentComputeResourcesEc2Configuration"], result)
+
+    @builtins.property
+    def ec2_key_pair(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#ec2_key_pair BatchComputeEnvironment#ec2_key_pair}.'''
+        result = self._values.get("ec2_key_pair")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def image_id(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id BatchComputeEnvironment#image_id}.'''
+        result = self._values.get("image_id")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def instance_role(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_role BatchComputeEnvironment#instance_role}.'''
+        result = self._values.get("instance_role")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def instance_type(self) -> typing.Optional[typing.List[builtins.str]]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#instance_type BatchComputeEnvironment#instance_type}.'''
+        result = self._values.get("instance_type")
+        return typing.cast(typing.Optional[typing.List[builtins.str]], result)
+
+    @builtins.property
+    def launch_template(
+        self,
+    ) -> typing.Optional["BatchComputeEnvironmentComputeResourcesLaunchTemplate"]:
+        '''launch_template block.
+
+        Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template BatchComputeEnvironment#launch_template}
+        '''
+        result = self._values.get("launch_template")
+        return typing.cast(typing.Optional["BatchComputeEnvironmentComputeResourcesLaunchTemplate"], result)
+
+    @builtins.property
+    def min_vcpus(self) -> typing.Optional[jsii.Number]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#min_vcpus BatchComputeEnvironment#min_vcpus}.'''
+        result = self._values.get("min_vcpus")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def spot_iam_fleet_role(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#spot_iam_fleet_role BatchComputeEnvironment#spot_iam_fleet_role}.'''
+        result = self._values.get("spot_iam_fleet_role")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def tags(self) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.'''
+        result = self._values.get("tags")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return "BatchComputeEnvironmentComputeResources(%s)" % ", ".join(
+            k + "=" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.data_type(
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResourcesEc2Configuration",
+    jsii_struct_bases=[],
+    name_mapping={"image_id_override": "imageIdOverride", "image_type": "imageType"},
+)
+class BatchComputeEnvironmentComputeResourcesEc2Configuration:
+    def __init__(
+        self,
+        *,
+        image_id_override: typing.Optional[builtins.str] = None,
+        image_type: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param image_id_override: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id_override BatchComputeEnvironment#image_id_override}.
+        :param image_type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_type BatchComputeEnvironment#image_type}.
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResourcesEc2Configuration.__init__)
+            check_type(argname="argument image_id_override", value=image_id_override, expected_type=type_hints["image_id_override"])
+            check_type(argname="argument image_type", value=image_type, expected_type=type_hints["image_type"])
+        self._values: typing.Dict[str, typing.Any] = {}
+        if image_id_override is not None:
+            self._values["image_id_override"] = image_id_override
+        if image_type is not None:
+            self._values["image_type"] = image_type
+
+    @builtins.property
+    def image_id_override(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id_override BatchComputeEnvironment#image_id_override}.'''
+        result = self._values.get("image_id_override")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def image_type(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_type BatchComputeEnvironment#image_type}.'''
+        result = self._values.get("image_type")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return "BatchComputeEnvironmentComputeResourcesEc2Configuration(%s)" % ", ".join(
+            k + "=" + repr(v) for k, v in self._values.items()
+        )
+
+
+class BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference(
+    cdktf.ComplexObject,
+    metaclass=jsii.JSIIMeta,
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference",
+):
+    def __init__(
+        self,
+        terraform_resource: cdktf.IInterpolatingParent,
+        terraform_attribute: builtins.str,
+    ) -> None:
+        '''
+        :param terraform_resource: The parent resource.
+        :param terraform_attribute: The attribute on the parent resource this class is referencing.
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference.__init__)
+            check_type(argname="argument terraform_resource", value=terraform_resource, expected_type=type_hints["terraform_resource"])
+            check_type(argname="argument terraform_attribute", value=terraform_attribute, expected_type=type_hints["terraform_attribute"])
+        jsii.create(self.__class__, self, [terraform_resource, terraform_attribute])
+
+    @jsii.member(jsii_name="resetImageIdOverride")
+    def reset_image_id_override(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetImageIdOverride", []))
+
+    @jsii.member(jsii_name="resetImageType")
+    def reset_image_type(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetImageType", []))
+
+    @builtins.property
+    @jsii.member(jsii_name="imageIdOverrideInput")
+    def image_id_override_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "imageIdOverrideInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="imageTypeInput")
+    def image_type_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "imageTypeInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="imageIdOverride")
+    def image_id_override(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "imageIdOverride"))
+
+    @image_id_override.setter
+    def image_id_override(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference, "image_id_override").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "imageIdOverride", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="imageType")
+    def image_type(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "imageType"))
+
+    @image_type.setter
+    def image_type(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference, "image_type").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "imageType", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="internalValue")
+    def internal_value(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResourcesEc2Configuration]:
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResourcesEc2Configuration], jsii.get(self, "internalValue"))
+
+    @internal_value.setter
+    def internal_value(
+        self,
+        value: typing.Optional[BatchComputeEnvironmentComputeResourcesEc2Configuration],
+    ) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference, "internal_value").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "internalValue", value)
+
+
+@jsii.data_type(
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResourcesLaunchTemplate",
+    jsii_struct_bases=[],
+    name_mapping={
+        "launch_template_id": "launchTemplateId",
+        "launch_template_name": "launchTemplateName",
+        "version": "version",
+    },
+)
+class BatchComputeEnvironmentComputeResourcesLaunchTemplate:
+    def __init__(
+        self,
+        *,
+        launch_template_id: typing.Optional[builtins.str] = None,
+        launch_template_name: typing.Optional[builtins.str] = None,
+        version: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param launch_template_id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_id BatchComputeEnvironment#launch_template_id}.
+        :param launch_template_name: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_name BatchComputeEnvironment#launch_template_name}.
+        :param version: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#version BatchComputeEnvironment#version}.
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResourcesLaunchTemplate.__init__)
+            check_type(argname="argument launch_template_id", value=launch_template_id, expected_type=type_hints["launch_template_id"])
+            check_type(argname="argument launch_template_name", value=launch_template_name, expected_type=type_hints["launch_template_name"])
+            check_type(argname="argument version", value=version, expected_type=type_hints["version"])
+        self._values: typing.Dict[str, typing.Any] = {}
+        if launch_template_id is not None:
+            self._values["launch_template_id"] = launch_template_id
+        if launch_template_name is not None:
+            self._values["launch_template_name"] = launch_template_name
+        if version is not None:
+            self._values["version"] = version
+
+    @builtins.property
+    def launch_template_id(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_id BatchComputeEnvironment#launch_template_id}.'''
+        result = self._values.get("launch_template_id")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def launch_template_name(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_name BatchComputeEnvironment#launch_template_name}.'''
+        result = self._values.get("launch_template_name")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def version(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#version BatchComputeEnvironment#version}.'''
+        result = self._values.get("version")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return "BatchComputeEnvironmentComputeResourcesLaunchTemplate(%s)" % ", ".join(
+            k + "=" + repr(v) for k, v in self._values.items()
+        )
+
+
+class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference(
+    cdktf.ComplexObject,
+    metaclass=jsii.JSIIMeta,
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference",
+):
+    def __init__(
+        self,
+        terraform_resource: cdktf.IInterpolatingParent,
+        terraform_attribute: builtins.str,
+    ) -> None:
+        '''
+        :param terraform_resource: The parent resource.
+        :param terraform_attribute: The attribute on the parent resource this class is referencing.
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference.__init__)
+            check_type(argname="argument terraform_resource", value=terraform_resource, expected_type=type_hints["terraform_resource"])
+            check_type(argname="argument terraform_attribute", value=terraform_attribute, expected_type=type_hints["terraform_attribute"])
+        jsii.create(self.__class__, self, [terraform_resource, terraform_attribute])
+
+    @jsii.member(jsii_name="resetLaunchTemplateId")
+    def reset_launch_template_id(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetLaunchTemplateId", []))
+
+    @jsii.member(jsii_name="resetLaunchTemplateName")
+    def reset_launch_template_name(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetLaunchTemplateName", []))
+
+    @jsii.member(jsii_name="resetVersion")
+    def reset_version(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetVersion", []))
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplateIdInput")
+    def launch_template_id_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "launchTemplateIdInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplateNameInput")
+    def launch_template_name_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "launchTemplateNameInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="versionInput")
+    def version_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "versionInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplateId")
+    def launch_template_id(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "launchTemplateId"))
+
+    @launch_template_id.setter
+    def launch_template_id(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference, "launch_template_id").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "launchTemplateId", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplateName")
+    def launch_template_name(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "launchTemplateName"))
+
+    @launch_template_name.setter
+    def launch_template_name(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference, "launch_template_name").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "launchTemplateName", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="version")
+    def version(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "version"))
+
+    @version.setter
+    def version(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference, "version").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "version", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="internalValue")
+    def internal_value(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResourcesLaunchTemplate]:
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResourcesLaunchTemplate], jsii.get(self, "internalValue"))
+
+    @internal_value.setter
+    def internal_value(
+        self,
+        value: typing.Optional[BatchComputeEnvironmentComputeResourcesLaunchTemplate],
+    ) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference, "internal_value").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "internalValue", value)
+
+
+class BatchComputeEnvironmentComputeResourcesOutputReference(
+    cdktf.ComplexObject,
+    metaclass=jsii.JSIIMeta,
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentComputeResourcesOutputReference",
+):
+    def __init__(
+        self,
+        terraform_resource: cdktf.IInterpolatingParent,
+        terraform_attribute: builtins.str,
+    ) -> None:
+        '''
+        :param terraform_resource: The parent resource.
+        :param terraform_attribute: The attribute on the parent resource this class is referencing.
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentComputeResourcesOutputReference.__init__)
+            check_type(argname="argument terraform_resource", value=terraform_resource, expected_type=type_hints["terraform_resource"])
+            check_type(argname="argument terraform_attribute", value=terraform_attribute, expected_type=type_hints["terraform_attribute"])
+        jsii.create(self.__class__, self, [terraform_resource, terraform_attribute])
+
+    @jsii.member(jsii_name="putEc2Configuration")
+    def put_ec2_configuration(
+        self,
+        *,
+        image_id_override: typing.Optional[builtins.str] = None,
+        image_type: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param image_id_override: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_id_override BatchComputeEnvironment#image_id_override}.
+        :param image_type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#image_type BatchComputeEnvironment#image_type}.
+        '''
+        value = BatchComputeEnvironmentComputeResourcesEc2Configuration(
+            image_id_override=image_id_override, image_type=image_type
+        )
+
+        return typing.cast(None, jsii.invoke(self, "putEc2Configuration", [value]))
+
+    @jsii.member(jsii_name="putLaunchTemplate")
+    def put_launch_template(
+        self,
+        *,
+        launch_template_id: typing.Optional[builtins.str] = None,
+        launch_template_name: typing.Optional[builtins.str] = None,
+        version: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param launch_template_id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_id BatchComputeEnvironment#launch_template_id}.
+        :param launch_template_name: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#launch_template_name BatchComputeEnvironment#launch_template_name}.
+        :param version: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#version BatchComputeEnvironment#version}.
+        '''
+        value = BatchComputeEnvironmentComputeResourcesLaunchTemplate(
+            launch_template_id=launch_template_id,
+            launch_template_name=launch_template_name,
+            version=version,
+        )
+
+        return typing.cast(None, jsii.invoke(self, "putLaunchTemplate", [value]))
+
+    @jsii.member(jsii_name="resetAllocationStrategy")
+    def reset_allocation_strategy(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetAllocationStrategy", []))
+
+    @jsii.member(jsii_name="resetBidPercentage")
+    def reset_bid_percentage(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetBidPercentage", []))
+
+    @jsii.member(jsii_name="resetDesiredVcpus")
+    def reset_desired_vcpus(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetDesiredVcpus", []))
+
+    @jsii.member(jsii_name="resetEc2Configuration")
+    def reset_ec2_configuration(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetEc2Configuration", []))
+
+    @jsii.member(jsii_name="resetEc2KeyPair")
+    def reset_ec2_key_pair(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetEc2KeyPair", []))
+
+    @jsii.member(jsii_name="resetImageId")
+    def reset_image_id(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetImageId", []))
+
+    @jsii.member(jsii_name="resetInstanceRole")
+    def reset_instance_role(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetInstanceRole", []))
+
+    @jsii.member(jsii_name="resetInstanceType")
+    def reset_instance_type(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetInstanceType", []))
+
+    @jsii.member(jsii_name="resetLaunchTemplate")
+    def reset_launch_template(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetLaunchTemplate", []))
+
+    @jsii.member(jsii_name="resetMinVcpus")
+    def reset_min_vcpus(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetMinVcpus", []))
+
+    @jsii.member(jsii_name="resetSpotIamFleetRole")
+    def reset_spot_iam_fleet_role(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetSpotIamFleetRole", []))
+
+    @jsii.member(jsii_name="resetTags")
+    def reset_tags(self) -> None:
+        return typing.cast(None, jsii.invoke(self, "resetTags", []))
+
+    @builtins.property
+    @jsii.member(jsii_name="ec2Configuration")
+    def ec2_configuration(
+        self,
+    ) -> BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference:
+        return typing.cast(BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference, jsii.get(self, "ec2Configuration"))
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplate")
+    def launch_template(
+        self,
+    ) -> BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference:
+        return typing.cast(BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference, jsii.get(self, "launchTemplate"))
+
+    @builtins.property
+    @jsii.member(jsii_name="allocationStrategyInput")
+    def allocation_strategy_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "allocationStrategyInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="bidPercentageInput")
+    def bid_percentage_input(self) -> typing.Optional[jsii.Number]:
+        return typing.cast(typing.Optional[jsii.Number], jsii.get(self, "bidPercentageInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="desiredVcpusInput")
+    def desired_vcpus_input(self) -> typing.Optional[jsii.Number]:
+        return typing.cast(typing.Optional[jsii.Number], jsii.get(self, "desiredVcpusInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="ec2ConfigurationInput")
+    def ec2_configuration_input(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResourcesEc2Configuration]:
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResourcesEc2Configuration], jsii.get(self, "ec2ConfigurationInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="ec2KeyPairInput")
+    def ec2_key_pair_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "ec2KeyPairInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="imageIdInput")
+    def image_id_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "imageIdInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="instanceRoleInput")
+    def instance_role_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "instanceRoleInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="instanceTypeInput")
+    def instance_type_input(self) -> typing.Optional[typing.List[builtins.str]]:
+        return typing.cast(typing.Optional[typing.List[builtins.str]], jsii.get(self, "instanceTypeInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="launchTemplateInput")
+    def launch_template_input(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResourcesLaunchTemplate]:
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResourcesLaunchTemplate], jsii.get(self, "launchTemplateInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="maxVcpusInput")
+    def max_vcpus_input(self) -> typing.Optional[jsii.Number]:
+        return typing.cast(typing.Optional[jsii.Number], jsii.get(self, "maxVcpusInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="minVcpusInput")
+    def min_vcpus_input(self) -> typing.Optional[jsii.Number]:
+        return typing.cast(typing.Optional[jsii.Number], jsii.get(self, "minVcpusInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="securityGroupIdsInput")
+    def security_group_ids_input(self) -> typing.Optional[typing.List[builtins.str]]:
+        return typing.cast(typing.Optional[typing.List[builtins.str]], jsii.get(self, "securityGroupIdsInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="spotIamFleetRoleInput")
+    def spot_iam_fleet_role_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "spotIamFleetRoleInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="subnetsInput")
+    def subnets_input(self) -> typing.Optional[typing.List[builtins.str]]:
+        return typing.cast(typing.Optional[typing.List[builtins.str]], jsii.get(self, "subnetsInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="tagsInput")
+    def tags_input(self) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], jsii.get(self, "tagsInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="typeInput")
+    def type_input(self) -> typing.Optional[builtins.str]:
+        return typing.cast(typing.Optional[builtins.str], jsii.get(self, "typeInput"))
+
+    @builtins.property
+    @jsii.member(jsii_name="allocationStrategy")
+    def allocation_strategy(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "allocationStrategy"))
+
+    @allocation_strategy.setter
+    def allocation_strategy(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "allocation_strategy").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "allocationStrategy", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="bidPercentage")
+    def bid_percentage(self) -> jsii.Number:
+        return typing.cast(jsii.Number, jsii.get(self, "bidPercentage"))
+
+    @bid_percentage.setter
+    def bid_percentage(self, value: jsii.Number) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "bid_percentage").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "bidPercentage", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="desiredVcpus")
+    def desired_vcpus(self) -> jsii.Number:
+        return typing.cast(jsii.Number, jsii.get(self, "desiredVcpus"))
+
+    @desired_vcpus.setter
+    def desired_vcpus(self, value: jsii.Number) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "desired_vcpus").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "desiredVcpus", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="ec2KeyPair")
+    def ec2_key_pair(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "ec2KeyPair"))
+
+    @ec2_key_pair.setter
+    def ec2_key_pair(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "ec2_key_pair").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "ec2KeyPair", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="imageId")
+    def image_id(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "imageId"))
+
+    @image_id.setter
+    def image_id(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "image_id").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "imageId", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="instanceRole")
+    def instance_role(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "instanceRole"))
+
+    @instance_role.setter
+    def instance_role(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "instance_role").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "instanceRole", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="instanceType")
+    def instance_type(self) -> typing.List[builtins.str]:
+        return typing.cast(typing.List[builtins.str], jsii.get(self, "instanceType"))
+
+    @instance_type.setter
+    def instance_type(self, value: typing.List[builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "instance_type").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "instanceType", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="maxVcpus")
+    def max_vcpus(self) -> jsii.Number:
+        return typing.cast(jsii.Number, jsii.get(self, "maxVcpus"))
+
+    @max_vcpus.setter
+    def max_vcpus(self, value: jsii.Number) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "max_vcpus").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "maxVcpus", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="minVcpus")
+    def min_vcpus(self) -> jsii.Number:
+        return typing.cast(jsii.Number, jsii.get(self, "minVcpus"))
+
+    @min_vcpus.setter
+    def min_vcpus(self, value: jsii.Number) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "min_vcpus").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "minVcpus", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="securityGroupIds")
+    def security_group_ids(self) -> typing.List[builtins.str]:
+        return typing.cast(typing.List[builtins.str], jsii.get(self, "securityGroupIds"))
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: typing.List[builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "security_group_ids").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "securityGroupIds", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="spotIamFleetRole")
+    def spot_iam_fleet_role(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "spotIamFleetRole"))
+
+    @spot_iam_fleet_role.setter
+    def spot_iam_fleet_role(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "spot_iam_fleet_role").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "spotIamFleetRole", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="subnets")
+    def subnets(self) -> typing.List[builtins.str]:
+        return typing.cast(typing.List[builtins.str], jsii.get(self, "subnets"))
+
+    @subnets.setter
+    def subnets(self, value: typing.List[builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "subnets").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "subnets", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="tags")
+    def tags(self) -> typing.Mapping[builtins.str, builtins.str]:
+        return typing.cast(typing.Mapping[builtins.str, builtins.str], jsii.get(self, "tags"))
+
+    @tags.setter
+    def tags(self, value: typing.Mapping[builtins.str, builtins.str]) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "tags").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "tags", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="type")
+    def type(self) -> builtins.str:
+        return typing.cast(builtins.str, jsii.get(self, "type"))
+
+    @type.setter
+    def type(self, value: builtins.str) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "type").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "type", value)
+
+    @builtins.property
+    @jsii.member(jsii_name="internalValue")
+    def internal_value(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResources]:
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResources], jsii.get(self, "internalValue"))
+
+    @internal_value.setter
+    def internal_value(
+        self,
+        value: typing.Optional[BatchComputeEnvironmentComputeResources],
+    ) -> None:
+        if __debug__:
+            type_hints = typing.get_type_hints(getattr(BatchComputeEnvironmentComputeResourcesOutputReference, "internal_value").fset)
+            check_type(argname="argument value", value=value, expected_type=type_hints["value"])
+        jsii.set(self, "internalValue", value)
+
+
+@jsii.data_type(
+    jsii_type="@cdktf/provider-aws.batchComputeEnvironment.BatchComputeEnvironmentConfig",
+    jsii_struct_bases=[cdktf.TerraformMetaArguments],
+    name_mapping={
+        "connection": "connection",
+        "count": "count",
+        "depends_on": "dependsOn",
+        "for_each": "forEach",
+        "lifecycle": "lifecycle",
+        "provider": "provider",
+        "provisioners": "provisioners",
+        "type": "type",
+        "compute_environment_name": "computeEnvironmentName",
+        "compute_environment_name_prefix": "computeEnvironmentNamePrefix",
+        "compute_resources": "computeResources",
+        "id": "id",
+        "service_role": "serviceRole",
+        "state": "state",
+        "tags": "tags",
+        "tags_all": "tagsAll",
+    },
+)
+class BatchComputeEnvironmentConfig(cdktf.TerraformMetaArguments):
+    def __init__(
+        self,
+        *,
+        connection: typing.Optional[typing.Union[typing.Union[cdktf.SSHProvisionerConnection, typing.Dict[str, typing.Any]], typing.Union[cdktf.WinrmProvisionerConnection, typing.Dict[str, typing.Any]]]] = None,
+        count: typing.Optional[jsii.Number] = None,
+        depends_on: typing.Optional[typing.Sequence[cdktf.ITerraformDependable]] = None,
+        for_each: typing.Optional[cdktf.ITerraformIterator] = None,
+        lifecycle: typing.Optional[typing.Union[cdktf.TerraformResourceLifecycle, typing.Dict[str, typing.Any]]] = None,
+        provider: typing.Optional[cdktf.TerraformProvider] = None,
+        provisioners: typing.Optional[typing.Sequence[typing.Union[typing.Union[cdktf.FileProvisioner, typing.Dict[str, typing.Any]], typing.Union[cdktf.LocalExecProvisioner, typing.Dict[str, typing.Any]], typing.Union[cdktf.RemoteExecProvisioner, typing.Dict[str, typing.Any]]]]] = None,
+        type: builtins.str,
+        compute_environment_name: typing.Optional[builtins.str] = None,
+        compute_environment_name_prefix: typing.Optional[builtins.str] = None,
+        compute_resources: typing.Optional[typing.Union[BatchComputeEnvironmentComputeResources, typing.Dict[str, typing.Any]]] = None,
+        id: typing.Optional[builtins.str] = None,
+        service_role: typing.Optional[builtins.str] = None,
+        state: typing.Optional[builtins.str] = None,
+        tags: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+        tags_all: typing.Optional[typing.Mapping[builtins.str, builtins.str]] = None,
+    ) -> None:
+        '''
+        :param connection: 
+        :param count: 
+        :param depends_on: 
+        :param for_each: 
+        :param lifecycle: 
+        :param provider: 
+        :param provisioners: 
+        :param type: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.
+        :param compute_environment_name: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name BatchComputeEnvironment#compute_environment_name}.
+        :param compute_environment_name_prefix: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name_prefix BatchComputeEnvironment#compute_environment_name_prefix}.
+        :param compute_resources: compute_resources block. Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_resources BatchComputeEnvironment#compute_resources}
+        :param id: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#id BatchComputeEnvironment#id}. Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2. If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+        :param service_role: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#service_role BatchComputeEnvironment#service_role}.
+        :param state: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#state BatchComputeEnvironment#state}.
+        :param tags: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.
+        :param tags_all: Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags_all BatchComputeEnvironment#tags_all}.
+        '''
+        if isinstance(lifecycle, dict):
+            lifecycle = cdktf.TerraformResourceLifecycle(**lifecycle)
+        if isinstance(compute_resources, dict):
+            compute_resources = BatchComputeEnvironmentComputeResources(**compute_resources)
+        if __debug__:
+            type_hints = typing.get_type_hints(BatchComputeEnvironmentConfig.__init__)
+            check_type(argname="argument connection", value=connection, expected_type=type_hints["connection"])
+            check_type(argname="argument count", value=count, expected_type=type_hints["count"])
+            check_type(argname="argument depends_on", value=depends_on, expected_type=type_hints["depends_on"])
+            check_type(argname="argument for_each", value=for_each, expected_type=type_hints["for_each"])
+            check_type(argname="argument lifecycle", value=lifecycle, expected_type=type_hints["lifecycle"])
+            check_type(argname="argument provider", value=provider, expected_type=type_hints["provider"])
+            check_type(argname="argument provisioners", value=provisioners, expected_type=type_hints["provisioners"])
+            check_type(argname="argument type", value=type, expected_type=type_hints["type"])
+            check_type(argname="argument compute_environment_name", value=compute_environment_name, expected_type=type_hints["compute_environment_name"])
+            check_type(argname="argument compute_environment_name_prefix", value=compute_environment_name_prefix, expected_type=type_hints["compute_environment_name_prefix"])
+            check_type(argname="argument compute_resources", value=compute_resources, expected_type=type_hints["compute_resources"])
+            check_type(argname="argument id", value=id, expected_type=type_hints["id"])
+            check_type(argname="argument service_role", value=service_role, expected_type=type_hints["service_role"])
+            check_type(argname="argument state", value=state, expected_type=type_hints["state"])
+            check_type(argname="argument tags", value=tags, expected_type=type_hints["tags"])
+            check_type(argname="argument tags_all", value=tags_all, expected_type=type_hints["tags_all"])
+        self._values: typing.Dict[str, typing.Any] = {
+            "type": type,
+        }
+        if connection is not None:
+            self._values["connection"] = connection
+        if count is not None:
+            self._values["count"] = count
+        if depends_on is not None:
+            self._values["depends_on"] = depends_on
+        if for_each is not None:
+            self._values["for_each"] = for_each
+        if lifecycle is not None:
+            self._values["lifecycle"] = lifecycle
+        if provider is not None:
+            self._values["provider"] = provider
+        if provisioners is not None:
+            self._values["provisioners"] = provisioners
+        if compute_environment_name is not None:
+            self._values["compute_environment_name"] = compute_environment_name
+        if compute_environment_name_prefix is not None:
+            self._values["compute_environment_name_prefix"] = compute_environment_name_prefix
+        if compute_resources is not None:
+            self._values["compute_resources"] = compute_resources
+        if id is not None:
+            self._values["id"] = id
+        if service_role is not None:
+            self._values["service_role"] = service_role
+        if state is not None:
+            self._values["state"] = state
+        if tags is not None:
+            self._values["tags"] = tags
+        if tags_all is not None:
+            self._values["tags_all"] = tags_all
+
+    @builtins.property
+    def connection(
+        self,
+    ) -> typing.Optional[typing.Union[cdktf.SSHProvisionerConnection, cdktf.WinrmProvisionerConnection]]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("connection")
+        return typing.cast(typing.Optional[typing.Union[cdktf.SSHProvisionerConnection, cdktf.WinrmProvisionerConnection]], result)
+
+    @builtins.property
+    def count(self) -> typing.Optional[jsii.Number]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("count")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def depends_on(self) -> typing.Optional[typing.List[cdktf.ITerraformDependable]]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("depends_on")
+        return typing.cast(typing.Optional[typing.List[cdktf.ITerraformDependable]], result)
+
+    @builtins.property
+    def for_each(self) -> typing.Optional[cdktf.ITerraformIterator]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("for_each")
+        return typing.cast(typing.Optional[cdktf.ITerraformIterator], result)
+
+    @builtins.property
+    def lifecycle(self) -> typing.Optional[cdktf.TerraformResourceLifecycle]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("lifecycle")
+        return typing.cast(typing.Optional[cdktf.TerraformResourceLifecycle], result)
+
+    @builtins.property
+    def provider(self) -> typing.Optional[cdktf.TerraformProvider]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("provider")
+        return typing.cast(typing.Optional[cdktf.TerraformProvider], result)
+
+    @builtins.property
+    def provisioners(
+        self,
+    ) -> typing.Optional[typing.List[typing.Union[cdktf.FileProvisioner, cdktf.LocalExecProvisioner, cdktf.RemoteExecProvisioner]]]:
+        '''
+        :stability: experimental
+        '''
+        result = self._values.get("provisioners")
+        return typing.cast(typing.Optional[typing.List[typing.Union[cdktf.FileProvisioner, cdktf.LocalExecProvisioner, cdktf.RemoteExecProvisioner]]], result)
+
+    @builtins.property
+    def type(self) -> builtins.str:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#type BatchComputeEnvironment#type}.'''
+        result = self._values.get("type")
+        assert result is not None, "Required property 'type' is missing"
+        return typing.cast(builtins.str, result)
+
+    @builtins.property
+    def compute_environment_name(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name BatchComputeEnvironment#compute_environment_name}.'''
+        result = self._values.get("compute_environment_name")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def compute_environment_name_prefix(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_environment_name_prefix BatchComputeEnvironment#compute_environment_name_prefix}.'''
+        result = self._values.get("compute_environment_name_prefix")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def compute_resources(
+        self,
+    ) -> typing.Optional[BatchComputeEnvironmentComputeResources]:
+        '''compute_resources block.
+
+        Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#compute_resources BatchComputeEnvironment#compute_resources}
+        '''
+        result = self._values.get("compute_resources")
+        return typing.cast(typing.Optional[BatchComputeEnvironmentComputeResources], result)
+
+    @builtins.property
+    def id(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#id BatchComputeEnvironment#id}.
+
+        Please be aware that the id field is automatically added to all resources in Terraform providers using a Terraform provider SDK version below 2.
+        If you experience problems setting this value it might not be settable. Please take a look at the provider documentation to ensure it should be settable.
+        '''
+        result = self._values.get("id")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def service_role(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#service_role BatchComputeEnvironment#service_role}.'''
+        result = self._values.get("service_role")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def state(self) -> typing.Optional[builtins.str]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#state BatchComputeEnvironment#state}.'''
+        result = self._values.get("state")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def tags(self) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags BatchComputeEnvironment#tags}.'''
+        result = self._values.get("tags")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], result)
+
+    @builtins.property
+    def tags_all(self) -> typing.Optional[typing.Mapping[builtins.str, builtins.str]]:
+        '''Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment#tags_all BatchComputeEnvironment#tags_all}.'''
+        result = self._values.get("tags_all")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, builtins.str]], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return "BatchComputeEnvironmentConfig(%s)" % ", ".join(
+            k + "=" + repr(v) for k, v in self._values.items()
+        )
+
+
+__all__ = [
+    "BatchComputeEnvironment",
+    "BatchComputeEnvironmentComputeResources",
+    "BatchComputeEnvironmentComputeResourcesEc2Configuration",
+    "BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference",
+    "BatchComputeEnvironmentComputeResourcesLaunchTemplate",
+    "BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference",
+    "BatchComputeEnvironmentComputeResourcesOutputReference",
+    "BatchComputeEnvironmentConfig",
+]
+
+publication.publish()
