@@ -1,0 +1,1 @@
+from KubiScan import main
