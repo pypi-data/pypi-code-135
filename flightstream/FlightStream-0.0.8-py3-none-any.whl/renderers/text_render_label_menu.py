@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+from FlightStream.renderers.text_render import TextRender
+
+
+class TextRenderLabelMenu(TextRender):
+
+    def initialise_subclass(self):
+        self.font = "C:\Windows\Fonts\ARIAL.TTF"
+        self.font_size = 24
+        self.offset_y = 50
+        self.colour = (230, 230, 255)
+        return
