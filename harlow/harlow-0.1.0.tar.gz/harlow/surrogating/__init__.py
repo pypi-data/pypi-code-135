@@ -1,0 +1,11 @@
+from harlow.surrogating.surrogate_model import (  # noqa F401; GaussianProcessRegression,
+    BatchIndependentGaussianProcess,
+    BayesianNeuralNetwork,
+    DeepKernelMultiTaskGaussianProcess,
+    GaussianProcessTFP,
+    ModelListGaussianProcess,
+    MultiTaskGaussianProcess,
+    NeuralNetwork,
+    Surrogate,
+    VanillaGaussianProcess,
+)
