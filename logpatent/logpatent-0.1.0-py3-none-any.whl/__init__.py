@@ -1,0 +1,1 @@
+from logpatent import logger
