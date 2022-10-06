@@ -1,0 +1,1 @@
+#  test text-filehandlers in multiple encodings!
