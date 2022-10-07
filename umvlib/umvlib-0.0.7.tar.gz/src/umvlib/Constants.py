@@ -1,0 +1,6 @@
+class Constants:
+    STATUS_APPROVED = 3
+    STATUS_REPPROVED = 4
+
+    WAITING = 30
+    RETURNED_FROM_FIELD = 50
