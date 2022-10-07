@@ -1,0 +1,8 @@
+__version__ = "0.1.0.dev6"
+__npm_org__ = "@deephaven"
+__npm_package__ = "js-plugin-plotly"
+__npm_version__ = "0.1.0"
+__plugin_name__ = "@deephaven/js-plugin-plotly"
+__plugin_version__ = "0.1.0"
+__plugin_main__ = "index.js"
+__plugin_dist__ = "dist"
