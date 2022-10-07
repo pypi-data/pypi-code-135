@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+from django.core.management.base import BaseCommand
+from django.urls import get_resolver
+
+
+class Command(BaseCommand):
+    help = 'Shows all project urls (routes) alphabetically in cli environment.'
+    
+    def handle(self, *args, **options):
+        urls = sorted(set(v[1] for k,v in get_resolver(None).reverse_dict.items()))
+        for url in urls:
+            self.stdout.write(url)
