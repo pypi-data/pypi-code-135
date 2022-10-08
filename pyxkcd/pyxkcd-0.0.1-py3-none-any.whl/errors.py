@@ -1,0 +1,2 @@
+class InvalidComicError(Exception):
+    pass
