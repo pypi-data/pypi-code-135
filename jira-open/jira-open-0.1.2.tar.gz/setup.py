@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup
+
+packages = \
+['jira-open',
+ 'jira-open.urwid',
+ 'jira-open.urwid.bin',
+ 'jira-open.urwid.docs',
+ 'jira-open.urwid.docs.examples',
+ 'jira-open.urwid.docs.manual',
+ 'jira-open.urwid.docs.tutorial',
+ 'jira-open.urwid.examples',
+ 'jira-open.urwid.urwid',
+ 'jira-open.urwid.urwid.tests']
+
+package_data = \
+{'': ['*'],
+ 'jira-open': ['.git/*',
+               '.git/hooks/*',
+               '.git/info/*',
+               '.git/logs/*',
+               '.git/logs/refs/heads/*',
+               '.git/logs/refs/heads/task/*',
+               '.git/logs/refs/remotes/origin/*',
+               '.git/objects/05/*',
+               '.git/objects/08/*',
+               '.git/objects/14/*',
+               '.git/objects/18/*',
+               '.git/objects/1b/*',
+               '.git/objects/21/*',
+               '.git/objects/22/*',
+               '.git/objects/24/*',
+               '.git/objects/27/*',
+               '.git/objects/34/*',
+               '.git/objects/35/*',
+               '.git/objects/45/*',
+               '.git/objects/51/*',
+               '.git/objects/57/*',
+               '.git/objects/5e/*',
+               '.git/objects/6a/*',
+               '.git/objects/6d/*',
+               '.git/objects/7f/*',
+               '.git/objects/85/*',
+               '.git/objects/8c/*',
+               '.git/objects/8d/*',
+               '.git/objects/8f/*',
+               '.git/objects/94/*',
+               '.git/objects/95/*',
+               '.git/objects/96/*',
+               '.git/objects/9b/*',
+               '.git/objects/a9/*',
+               '.git/objects/ac/*',
+               '.git/objects/ad/*',
+               '.git/objects/ae/*',
+               '.git/objects/b6/*',
+               '.git/objects/bb/*',
+               '.git/objects/c6/*',
+               '.git/objects/e2/*',
+               '.git/objects/e9/*',
+               '.git/objects/f3/*',
+               '.git/objects/f7/*',
+               '.git/objects/fe/*',
+               '.git/refs/heads/*',
+               '.git/refs/heads/task/*',
+               '.git/refs/remotes/origin/*',
+               '.git/refs/tags/*',
+               '.vscode/*'],
+ 'jira-open.urwid': ['.git/*',
+                     '.git/hooks/*',
+                     '.git/info/*',
+                     '.git/logs/*',
+                     '.git/logs/refs/heads/*',
+                     '.git/logs/refs/remotes/origin/*',
+                     '.git/objects/pack/*',
+                     '.git/refs/heads/*',
+                     '.git/refs/remotes/origin/*',
+                     'source/*'],
+ 'jira-open.urwid.docs': ['reference/*',
+                          'tools/*',
+                          'tools/static/*',
+                          'tools/templates/*'],
+ 'jira-open.urwid.docs.manual': ['images/*']}
+
+install_requires = \
+['black>=22.8.0,<23.0.0', 'requests', 'urwid>=2.1.2,<3.0.0']
+
+entry_points = \
+{'console_scripts': ['jopen = jopen:main']}
+
+setup_kwargs = {
+    'name': 'jira-open',
+    'version': '0.1.2',
+    'description': 'jira open; git check; git bind jira',
+    'long_description': None,
+    'author': 'YunpengZhan',
+    'author_email': '136688059@qq.com',
+    'maintainer': None,
+    'maintainer_email': None,
+    'url': None,
+    'packages': packages,
+    'package_data': package_data,
+    'install_requires': install_requires,
+    'entry_points': entry_points,
+    'python_requires': '>=3.7,<4.0',
+}
+
+
+setup(**setup_kwargs)
