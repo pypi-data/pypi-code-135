@@ -1,0 +1,94 @@
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+"""Model Wrapper class to encapsulate automl model functionality"""
+import re
+import torch
+
+from transformers import Trainer, default_data_collator, PreTrainedTokenizer
+
+from azureml.automl.dnn.nlp.ner.io.read.dataset_wrapper import NerDatasetWrapper
+from azureml.automl.dnn.nlp.ner.token_classification_metrics import TokenClassificationMetrics
+from azureml.automl.dnn.nlp.common.constants import DataLiterals, Split
+from azureml.automl.dnn.nlp.common.training_configuration import TrainingConfiguration
+
+
+class ModelWrapper:
+    """Class to wrap AutoML NLP models in the AutoMLTransformer interface"""
+
+    def __init__(self,
+                 model: torch.nn.Module,
+                 label_list: list,
+                 tokenizer: PreTrainedTokenizer,
+                 training_configuration: TrainingConfiguration):
+        """
+        Transform the input data into outputs tensors from model
+
+        :param model: Trained model, preferably trained using HuggingFace trainer
+        :param label_list: List of labels that the model was trained on
+        :param tokenizer: PretrainedTokenizer used by the NerDatasetWrapper while training
+        :param training_configuration: a collection of parameters to dictate the training procedure.
+        """
+        super().__init__()
+        self.model = model.to("cpu")
+        self.label_list = label_list
+        self.tokenizer = tokenizer
+        self.training_configuration = training_configuration
+
+    def predict_proba(self, X: str) -> str:
+        """
+        Predict output labels and label confidences for text datasets.
+
+        :param X: string of tokens in CoNLL format, without labels.
+        :return: string of labeled X with label confidences, in CoNLL format.
+        """
+        dataset = NerDatasetWrapper(X,
+                                    tokenizer=self.tokenizer,
+                                    labels=self.label_list,
+                                    training_configuration=self.training_configuration,
+                                    mode=Split.test)
+
+        token_classification_metrics = TokenClassificationMetrics(self.label_list)
+        trainer = Trainer(model=self.model,
+                          data_collator=default_data_collator,
+                          compute_metrics=token_classification_metrics.compute_metrics)
+        raw_predictions, label_ids, metrics = trainer.predict(test_dataset=dataset)
+        preds_list, _, preds_proba_list = token_classification_metrics.align_predictions_with_proba(raw_predictions,
+                                                                                                    label_ids)
+        prediction_strings = []
+        for idx in range(len(preds_list)):
+            # Don't predict on ignored -DOCSTART- lines.
+            if dataset.data[idx].startswith("-DOCSTART-"):
+                prediction_strings.append(dataset.data[idx].strip())
+            else:
+                # dataset.data[idx] should be one multiline CoNLL example. In the labeled case, something like
+                # `Hello O\nthere O`, and in the unlabaled case, `Hello\nthere`.
+                words = [item.strip().split()[0] for item in dataset.data[idx].split("\n")
+                         if item not in DataLiterals.NER_IGNORE_TOKENS]
+                preds = preds_list[idx]
+                pred_probas = preds_proba_list[idx]
+
+                sample_str = "\n".join(["{} {} {:.3f}".format(item[0], item[1], item[2]) for item in
+                                        zip(words, preds, pred_probas)])
+                prediction_strings.append(sample_str)
+        return "\n\n".join(prediction_strings)
+
+    def predict(self, X: str) -> str:
+        """
+        Predict output labels for text datasets
+
+        :param X: String of tokens in CoNLL format, without labels
+        :return: String of labeled X, in CoNLL format
+        """
+        predictions_with_probabilities = self.predict_proba(X)
+        # Strip the probabilities, since they're not wanted in this case.
+        examples = predictions_with_probabilities.split('\n\n')
+        stripped_predictions = []
+        for example in examples:
+            # Go from 'SOCCER O 0.99934983' to 'SOCCER O'
+            sample_str = "\n".join(
+                [re.sub(r"([\S]+ (?:O|I-[\S]*|B-[\S]*)) \d+[.]?\d*\s*",
+                        lambda match: match.group(1), ex) for ex in example.split('\n')]
+            )
+            stripped_predictions.append(sample_str)
+        return "\n\n".join(stripped_predictions)
