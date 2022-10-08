@@ -1,0 +1,8 @@
+__appname__ = 'hai'
+__version__ = '1.0.3'
+__author__ = 'ZhengDe Zhang'
+__email__ = 'zdzhang@ihep.ac.cn'
+__backend__ = 'local'
+__affiliation__ = 'CC, IHEP, CAS'
+__supervisor__ = 'FaZhi Qi'
+__collaborator__ = ''
