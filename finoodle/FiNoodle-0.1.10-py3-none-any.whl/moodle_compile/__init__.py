@@ -1,0 +1,1 @@
+from FiNoodle.moodle_compile import compile
