@@ -1,0 +1,30 @@
+from TurbineGeneratorOverLimitDiagnosis.tools.v2.Method_UpperGuideBearingPadDegradedDegreeDiagnosis import UpperGuideBearingPadDegradedDegreeDiagnosis
+# from tools.v2.Method_UpperGuideBearingPadDegradedDegreeDiagnosis import UpperGuideBearingPadDegradedDegreeDiagnosis
+
+import numpy as np
+
+def main():
+    """
+    {'dfem_evidence': '[上导轴承瓦瓦面润滑情况]劣化正常', 'dfem_code': ''}
+    ......
+    {'dfem_evidence': '[上导轴承瓦瓦面润滑情况]劣化正常', 'dfem_code': ''}
+    {'dfem_evidence': '[上导轴承瓦面]劣化程度(45.34)超限报警,阈值0.10', 'dfem_code': 'SP000510'}
+    {'dfem_evidence': '[上导轴承瓦面]劣化程度(45.34)超限报警,阈值0.10', 'dfem_code': 'SP000510'}
+    {'dfem_evidence': '[上导轴承瓦面]劣化程度(45.34)超限报警,阈值0.10', 'dfem_code': 'SP000510'}
+    {'dfem_evidence': '[上导轴承瓦面]劣化程度(45.34)超限报警,阈值0.10', 'dfem_code': 'SP000510'}
+    {'dfem_evidence': '[上导轴承瓦面]劣化程度(45.34)超限报警,阈值0.10', 'dfem_code': 'SP000510'}
+    {'dfem_evidence': '[上导轴承瓦瓦面润滑情况]劣化正常', 'dfem_code': ''}
+    ......
+    {'dfem_evidence': '[上导轴承瓦瓦面润滑情况]劣化正常', 'dfem_code': ''}
+    """
+    np.random.seed(1234)
+    values = np.random.randn(130, 1)
+    timestamps = np.arange(1665368444, 1665368444+130).reshape((130, 1))
+    samples = np.concatenate([values, timestamps], axis=1)
+    obj = UpperGuideBearingPadDegradedDegreeDiagnosis(theoreticIncreaseRate=0.1)
+    for i in range(len(samples)):
+        print(obj.diagnosis(*samples[i]))
+
+
+if __name__ == '__main__':
+    main()
